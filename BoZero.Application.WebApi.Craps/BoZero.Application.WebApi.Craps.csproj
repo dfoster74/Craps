@@ -12,4 +12,8 @@
     <Folder Include="Data\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BoZero.Craps.Business.Core\BoZero.Craps.Business.Core.csproj" />
+  </ItemGroup>
+
 </Project>

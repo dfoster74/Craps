@@ -11,6 +11,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BoZero.Craps.Business.Core.Interfaces;
+using BoZero.Craps.Business.Core.Services;
 
 namespace BoZero.Application.WebApi.Craps
 {
@@ -26,6 +28,7 @@ namespace BoZero.Application.WebApi.Craps
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddSingleton<IRollService, RollService>();
 
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
