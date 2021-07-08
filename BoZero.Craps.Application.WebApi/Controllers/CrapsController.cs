@@ -1,4 +1,5 @@
-﻿using BoZero.Craps.Application.WebApi.Models;
+﻿using AutoMapper;
+using BoZero.Craps.Application.WebApi.Models;
 using BoZero.Craps.Business.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,17 +10,20 @@ namespace BoZero.Craps.Application.WebApi.Controllers
 	public class CrapsController : ControllerBase
 	{
 		private readonly IRollService _rollService;
+		private readonly IMapper _mapper;
 
-		public CrapsController(IRollService rollService)
+		public CrapsController(IRollService rollService, IMapper mapper)
 		{
 			_rollService = rollService;
+			_mapper = mapper;
 		}
 
 		[HttpGet]
 		public IActionResult GetDice()
 		{
 			var roll = _rollService.GetRoll();
-			var rollModel = new RollModel {Die1 = roll.Die1, Die2 = roll.Die2};
+
+			var rollModel = _mapper.Map<RollModel>(roll);
 			return Ok(rollModel);
 		}
 	}
