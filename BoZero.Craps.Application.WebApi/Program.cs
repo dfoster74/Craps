@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BoZero.Application.WebApi.Craps
+namespace BoZero.Craps.Application.WebApi
 {
 	public class Program
 	{

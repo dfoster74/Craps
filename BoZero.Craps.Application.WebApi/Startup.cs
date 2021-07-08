@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using BoZero.Craps.Business.Core.Interfaces;
 using BoZero.Craps.Business.Core.Services;
 
-namespace BoZero.Application.WebApi.Craps
+namespace BoZero.Craps.Application.WebApi
 {
 	public class Startup
 	{
@@ -33,7 +33,7 @@ namespace BoZero.Application.WebApi.Craps
 			services.AddControllers();
 			services.AddSwaggerGen(c =>
 			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "BoZero.Application.WebApi.Craps", Version = "v1" });
+				c.SwaggerDoc("v1", new OpenApiInfo { Title = "BoZero.Craps.Application.WebApi", Version = "v1" });
 			});
 		}
 
@@ -44,7 +44,7 @@ namespace BoZero.Application.WebApi.Craps
 			{
 				app.UseDeveloperExceptionPage();
 				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BoZero.Application.WebApi.Craps v1"));
+				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "BoZero.Craps.Application.WebApi v1"));
 			}
 
 			app.UseHttpsRedirection();

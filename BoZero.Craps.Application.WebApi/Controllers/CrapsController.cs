@@ -1,14 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Permissions;
-using System.Threading.Tasks;
-using BoZero.Application.WebApi.Craps.Models;
+﻿using BoZero.Craps.Application.WebApi.Models;
 using BoZero.Craps.Business.Core.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
-namespace BoZero.Application.WebApi.Craps.Controllers
+namespace BoZero.Craps.Application.WebApi.Controllers
 {
 	[Route("api/[controller]")]
 	[ApiController]
