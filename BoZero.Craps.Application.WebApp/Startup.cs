@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BoZero.Craps.Application.WebApp.Data;
 
 namespace BoZero.Craps.Application.WebApp
 {
@@ -23,7 +24,13 @@ namespace BoZero.Craps.Application.WebApp
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-			//services.AddHttpClient<IPaiGowApiClient, PaiGowApiClient>("IPaiGowApiClient", x => { x.BaseAddress = new Uri("https://localhost:44389"); });
+			services.AddHttpClient<ICrapsApiClient, CrapsApiClient>(client =>
+			{
+				client.BaseAddress = new Uri("https://localhost:44320");
+				client.Timeout = new TimeSpan(0, 0, 30);
+				client.DefaultRequestHeaders.Clear();
+			});
+
 			services.AddRazorPages();
 		}
 
