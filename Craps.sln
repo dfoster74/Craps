@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BoZero.Craps.Application.We
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoZero.Craps.Application.WebApp", "BoZero.Craps.Application.WebApp\BoZero.Craps.Application.WebApp.csproj", "{B13DFD28-4E13-45C4-8E5E-476C504FE4D2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoZero.Craps.Business.Core.Tests", "BoZero.Craps.Business.Core.Tests\BoZero.Craps.Business.Core.Tests.csproj", "{1D9D92A5-D68F-4E7B-B765-5E113E61E6BE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{B13DFD28-4E13-45C4-8E5E-476C504FE4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B13DFD28-4E13-45C4-8E5E-476C504FE4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B13DFD28-4E13-45C4-8E5E-476C504FE4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D9D92A5-D68F-4E7B-B765-5E113E61E6BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D9D92A5-D68F-4E7B-B765-5E113E61E6BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D9D92A5-D68F-4E7B-B765-5E113E61E6BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D9D92A5-D68F-4E7B-B765-5E113E61E6BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
