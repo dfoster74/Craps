@@ -8,6 +8,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using BoZero.Craps.Application.WebApp.Data;
+using Serilog;
 
 namespace BoZero.Craps.Application.WebApp.Pages
 {
@@ -24,6 +25,7 @@ namespace BoZero.Craps.Application.WebApp.Pages
 
 		public async void OnGet()
 		{
+			Log.Information("The time is " + DateTime.Now);
 			var cancellationTokenSource = new CancellationTokenSource();
 
 			var roll = await _crapsApiClient.GetDice(cancellationTokenSource.Token);

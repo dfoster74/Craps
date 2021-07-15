@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using System;
+using System.Threading;
+using AutoMapper;
 using BoZero.Craps.Application.WebApi.Models;
 using BoZero.Craps.Business.Core.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -22,7 +24,6 @@ namespace BoZero.Craps.Application.WebApi.Controllers
 		public IActionResult GetDice()
 		{
 			var roll = _rollService.GetRoll();
-
 			var rollModel = _mapper.Map<RollModel>(roll);
 			return Ok(rollModel);
 		}

@@ -1,20 +1,25 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using BoZero.Craps.Business.Core.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace BoZero.Craps.Business.Core.Services
 {
 	public class RandomNumberService : IRandomNumberService
 	{
+		private readonly ILogger<RandomNumberService> _logger;
+
 		private readonly Random _rng = new Random();
+
+		public RandomNumberService(ILogger<RandomNumberService> logger)
+		{
+			_logger = logger;
+		}
 
 		public int GetRandomNumber(int maxValue)
 		{
-			return _rng.Next(maxValue);
+			var result = _rng.Next(maxValue);
+			_logger.LogDebug($"Random Number Selected: {result}");
+			return result;
 		}
 	}
 }

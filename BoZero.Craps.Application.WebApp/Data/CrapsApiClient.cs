@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Net.WebSockets;
 using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using BoZero.Craps.Business.Core.Entities;
+using Microsoft.Extensions.Logging;
 
 namespace BoZero.Craps.Application.WebApp.Data
 {
@@ -16,26 +13,29 @@ namespace BoZero.Craps.Application.WebApp.Data
 	{
 		private readonly HttpClient _httpClient;
 
-		public CrapsApiClient(HttpClient httpClient)
+		private readonly ILogger<CrapsApiClient> _logger;
+
+		public CrapsApiClient(HttpClient httpClient, ILogger<CrapsApiClient> logger)
 		{
+			_logger = logger;
 			_httpClient = httpClient;
 		}
 
 		public async Task<Roll> GetDice(CancellationToken cancellationToken)
 		{
 			var request = new HttpRequestMessage(HttpMethod.Get, "api/craps");
-			request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json", 1.0));
+			request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 			try
 			{
 				using var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, cancellationToken);
 				response.EnsureSuccessStatusCode();
-				var content = await response.Content.ReadAsStringAsync(cancellationToken);
-				return JsonSerializer.Deserialize<Roll>(content, new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase});
+				await using var stream = await response.Content.ReadAsStreamAsync(cancellationToken);
+				return await JsonSerializer.DeserializeAsync<Roll>(stream, new JsonSerializerOptions {PropertyNamingPolicy = JsonNamingPolicy.CamelCase}, cancellationToken);
 			}
 			catch (OperationCanceledException e)
 			{
-				Console.WriteLine($"An operation was cancelled with message {e.Message}.");
+				_logger.LogError($"$Cancellation: {e.Message}");
 				throw;
 			}
 		}
